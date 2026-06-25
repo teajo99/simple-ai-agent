@@ -59,6 +59,34 @@ python agent.py
 
 ---
 
+Git Commands Used in This Project
+
+These are the real Git commands used while building this project:
+
+## Setup & Initial Commit
+git init
+git add .
+git commit -m "Initial commit"
+## Branching (Feature Development)
+git branch
+git checkout -b feature/tools
+git switch feature/logging
+## Staging & Committing Changes
+git add tools.py
+git add agent.py
+
+git commit -m "Add calculator and time tools"
+## Merging Branches
+git checkout main
+git merge feature/tools
+## Deleting Branches
+git branch -d feature/tools
+## Viewing History
+git log --oneline --graph --all
+## Connecting to GitHub
+git remote add origin https://github.com/username/simple-ai-agent.git
+git push -u origin main
+
 ##  Example Usage
 
 ```
