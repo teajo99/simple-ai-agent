@@ -1,18 +1,18 @@
 """
 agent.py
-The main entry point for our simple AI agent.
-
-
-COMMIT 1: Just the skeleton. The agent can start, greet the user,
-and exit cleanly. No real intelligence yet -- that comes in later commits.
+COMMIT 2: Wires in the Memory module so the agent now remembers
+the conversation for the session.
 """
+
+
+from memory import Memory
 
 
 
 
 def greet():
     print("=" * 50)
-    print("  Simple AI Agent  (v0.1 - skeleton)")
+    print("  Simple AI Agent  (v0.2 - with memory)")
     print("=" * 50)
     print("Type 'exit' to quit.\n")
 
@@ -21,18 +21,29 @@ def greet():
 
 def run():
     greet()
+    memory = Memory()
+
+
     while True:
         user_input = input("You: ").strip()
+        memory.add("user", user_input)
+
+
         if user_input.lower() in ("exit", "quit"):
-            print("Agent: Goodbye!")
+            print(f"Agent: Goodbye! We had {memory.turn_count()} turns this session.")
             break
-        # Placeholder response -- will be replaced with real logic later
-        print("Agent: (not implemented yet)")
+
+
+        response = "(not implemented yet)"
+        memory.add("agent", response)
+        print(f"Agent: {response}")
 
 
 
 
 if __name__ == "__main__":
     run()
+
+
 
 
