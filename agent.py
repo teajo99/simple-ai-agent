@@ -59,3 +59,34 @@ def run():
 if __name__ == "__main__":
     run()
 
+from memory import Memory
+from tools import calculate, get_time
+from logger import log_turn        # <-- new import
+
+
+# ... generate_response() unchanged ...
+
+
+def run():
+    greet()
+    memory = Memory()
+
+
+    while True:
+        user_input = input("You: ").strip()
+        memory.add("user", user_input)
+        log_turn("user", user_input)        # <-- new line
+
+
+        if user_input.lower() in ("exit", "quit"):
+            farewell = f"Goodbye! We had {memory.turn_count()} turns this session."
+            log_turn("agent", farewell)      # <-- new line
+            print(f"Agent: {farewell}")
+            break
+
+
+        response = generate_response(user_input)
+        memory.add("agent", response)
+        log_turn("agent", response)          # <-- new line
+        print(f"Agent: {response}")
+
